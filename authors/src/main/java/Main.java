@@ -34,21 +34,22 @@ public class Main {
     }
 
     private static void addMethodToCorrespondingAuthor(Map<String, List<Method>> authorsWithMethods, Method method) {
-        Author author = method.getAnnotation(Author.class);
-        if (authorsWithMethods.containsKey(author.name())){
-            authorsWithMethods.get(author.name()).add(method);
-        }
-        else{
-            List <Method> list = new ArrayList<>();
-            list.add(method);
-            authorsWithMethods.put(author.name(), list);
+        Author [] authors = method.getAnnotationsByType(Author.class);
+        for (Author author : authors) {
+            if (authorsWithMethods.containsKey(author.value())) {
+                authorsWithMethods.get(author.value()).add(method);
+            } else {
+                List<Method> list = new ArrayList<>();
+                list.add(method);
+                authorsWithMethods.put(author.value(), list);
+            }
         }
     }
 
     private static Map<String, List<Method>> processMapAuthorAndMethods(Method[] methods) {
         Map <String, List<Method>> authorsWithMethods = new HashMap<>();
         for (Method method : methods){
-            if (method.isAnnotationPresent(Author.class)) {
+            if (method.isAnnotationPresent(Author.class) || method.isAnnotationPresent(Authors.class)) {
                 addMethodToCorrespondingAuthor(authorsWithMethods, method);
             }
         }

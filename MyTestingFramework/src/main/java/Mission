@@ -1,0 +1,31 @@
+1. You CANNOT change content of Test.java and Main.java class
+2. You must create your own classes and annotations to invoke methods from Tests.java class
+   and using annotations @MyTest and @MyBeforeTest along with reflection get an output like:
+
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test numer 1.");
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test number 2.");
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test number 3.");
+
+After that I am able to add another method to Tests class i.e.
+
+    @MyTest
+    public void newTest(){
+        System.out.println("My newly added test");
+    }
+
+    and I'll get:
+
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test numer 1.");
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test number 2.");
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("Test number 3.");
+    System.out.println("I am invoked before any method with @MyTest annotation.");
+    System.out.println("My newly added test");
+
+
+Task if finished if it works for any instance of testing class that I'll pass to runTestsFrom(...) in Main class;

@@ -2,22 +2,26 @@ package main.java;
 
 public class SomeMethods {
 
-    @Author(name = "Krzyś")
+    @Author("Krzyś")
     public void PrintDay(){
         System.out.println("Wednesday");
     }
 
-    @Author(name = "Piotrek")
+    @Author("Piotrek")
+    @Author()
     public void PrintHour(){
         System.out.println("12:00");
     }
 
-    @Author(name = "Jacek")
+    @Author("Jacek")
+    @Author("Grześ")
+    @Author("Paweł")
     public void PrintColor(){
         System.out.println("Red");
     }
 
-    @Author(name = "Krzyś")
+    @Author("Krzyś")
+    @Author("Jacek")
     public void SaySmth(){
         System.out.println("Nothing");
     }

@@ -8,7 +8,6 @@
         <groupId>edu.annotations</groupId>
         <artifactId>app</artifactId>
         <version>1.0</version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     </parent>
 
     <groupId>edu.annotations</groupId>
@@ -19,6 +18,7 @@
     <properties>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <testng.version>6.14.3</testng.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     </properties>
 
     <build>

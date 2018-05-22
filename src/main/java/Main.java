@@ -5,21 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    /* Fix that program to have an output like:
-
-    Author: Jacek
-    SaySmth
-    PrintColor
-
-    Author: Krzyś
-    PrintDay
-    SaySmth
-
-    ...
-
-    SomeMethods.java class HAS TO BE UNTOUCHED !
-    */
-
     public static void main(String[] args) {
         SomeMethods someMethods = new SomeMethods();
         printMethodsCorrespondingToItsAuthors(someMethods);

@@ -1,4 +1,4 @@
-package main.java;
+package com.damian.muca;
 
 @ToString
 public class Rectangle{

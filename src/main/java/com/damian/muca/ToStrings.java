@@ -1,4 +1,4 @@
-package main.java;
+package com.damian.muca;
 
 import java.lang.reflect.Field;
 

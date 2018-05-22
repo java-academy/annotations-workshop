@@ -1,4 +1,4 @@
-package main.java;
+package com.damian.muca;
 
 public class Main {
     public static void main(String[] args) {

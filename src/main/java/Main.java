@@ -5,6 +5,33 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+    /*
+
+    Your program should have output like:
+
+    Method: PrintDay
+    - Krzyś
+
+    Method: PrintHour
+    - Piotrek
+    - Marcin
+
+    Method: PrintColor
+    - Jacek
+    - Grześ
+    - Paweł
+
+
+    ...
+
+     You can modify all classes,
+     but cannot change signature of annotation (there must be an array inside annotation)
+
+    @Author({"Jacek", "Grześ", "Paweł"})
+
+     */
+
+
     public static void main(String[] args) {
         SomeMethods someMethods = new SomeMethods();
         printMethodsCorrespondingToItsAuthors(someMethods);

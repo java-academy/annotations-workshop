@@ -1,7 +1,5 @@
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -39,25 +37,17 @@ public class Main {
 
     private static void printMethodsCorrespondingToItsAuthors(Object someMethods) {
         Method[] methods = someMethods.getClass().getMethods();
-        Map<String, List<Method>> autorsWithMethods = processMapAuthorAndMethods(methods);
+        Map<Method, String[]> autorsWithMethods = processMapAuthorAndMethods(methods);
         printAuthorsWithCorrespondingMethods(autorsWithMethods);
     }
 
-    private static void addMethodToCorrespondingAuthor(Map<String, List<Method>> authorsWithMethods, Method method) {
-        Author [] authors = method.getAnnotationsByType(Author.class);
-        for (Author author : authors) {
-            if (authorsWithMethods.containsKey(author.value())) {
-                authorsWithMethods.get(author.value()).add(method);
-            } else {
-                List<Method> list = new ArrayList<>();
-                list.add(method);
-                authorsWithMethods.put(author.value(), list);
-            }
-        }
+    private static void addMethodToCorrespondingAuthor(Map<Method, String[]> authorsWithMethods, Method method) {
+        Author author = method.getAnnotation(Author.class);
+        authorsWithMethods.put(method, author.value());
     }
 
-    private static Map<String, List<Method>> processMapAuthorAndMethods(Method[] methods) {
-        Map <String, List<Method>> authorsWithMethods = new HashMap<>();
+    private static Map<Method, String[]> processMapAuthorAndMethods(Method[] methods) {
+        Map <Method, String[]> authorsWithMethods = new HashMap<>();
         for (Method method : methods){
             if (method.isAnnotationPresent(Author.class) || method.isAnnotationPresent(Authors.class)) {
                 addMethodToCorrespondingAuthor(authorsWithMethods, method);
@@ -66,11 +56,11 @@ public class Main {
         return authorsWithMethods;
     }
 
-    private static void printAuthorsWithCorrespondingMethods(Map<String, List<Method>> authorsWithMethods) {
-        for (String author : authorsWithMethods.keySet()){
-            System.out.println("Author: " + author);
-            for (Method method : authorsWithMethods.get(author)){
-                System.out.println(method.getName());
+    private static void printAuthorsWithCorrespondingMethods(Map<Method, String[]> authorsWithMethods) {
+        for (Method method : authorsWithMethods.keySet()){
+            System.out.println("Method: " + method.getName());
+            for (String authorName : authorsWithMethods.get(method)){
+                System.out.println(authorName);
             }
             System.out.println();
         }
